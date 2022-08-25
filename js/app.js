@@ -143,10 +143,27 @@ Test this function by hand in the console to get it working, and when you think 
 let testDynamicArray = [1, 2, 3, 4, 5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) {
-  //eslint-disable-line
+  //dynamicArray is equal to testDynamicArray
+  // create two empty variables that will firstly represent the numbers from the array once looped and another that will represent the numbers in the final string.
+  let myNum;
+  let myNumString = "";
+  // create a for loop
+  for (let i = 0; i < dynamicArray.length; i++) {
+    // create an if statement with the condition i === 0 meaning the first time it loops.
+    if (i === 0) {
+      myNum = dynamicArray[i]; // set my num to equal dynamicarray[i] the number in the array!
+      myNumString += dynamicArray[i]; //set the myNumString variable to concatinate dynamicArray[i]
+    } else {
+      // start your else statement, this will represent if [i] > 0 as the first condition is only if i === 0
+      myNum = multiply(myNum, dynamicArray[i])[0]; // myNum is now equal to the multiply function with the first argument equal to myNum which was dynamicArray[0] and the second argument as the dynamicArray[i] your currentyly looping through.
+      myNumString += "," + dynamicArray[i]; // this now takes  myNumString and concatenates it to the new dynamicArray[i]
+    }
+  }
+  return [myNum, `The numbers ${myNumString} have a product of ${myNum}.`];
+  // return [product of those numbers, "The numbers 1,2,3,4,5 have a product of 120."]
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyAnyArray(testDynamicArray);
+testMultiplyAnyArray(testDynamicArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
